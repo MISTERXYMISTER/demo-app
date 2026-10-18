@@ -17,6 +17,14 @@ class TestCartTotal(unittest.TestCase):
         ]
         self.assertEqual(calculate_cart_total(items), 40.0)
 
+    def test_flat10_coupon_deduction(self):
+        items = [{"price": 50.0, "quantity": 1}]
+        self.assertEqual(calculate_cart_total(items, coupon_code="FLAT10"), 40.0)
+
+    def test_flat10_coupon_cannot_drop_below_zero(self):
+        items = [{"price": 8.0, "quantity": 1}]
+        self.assertEqual(calculate_cart_total(items, coupon_code="FLAT10"), 0.0)
+
 
 if __name__ == "__main__":
     unittest.main()

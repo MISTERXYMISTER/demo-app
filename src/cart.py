@@ -8,6 +8,5 @@ def calculate_cart_total(items: list[dict], coupon_code: str | None = None) -> f
     """
     subtotal = sum(item["price"] * item.get("quantity", 1) for item in items)
     if coupon_code == "FLAT10":
-        # SEEDED BUG: applies 10% discount instead of $10 flat discount
-        subtotal = subtotal * 0.90
+        subtotal = subtotal - 10.0
     return max(0.0, round(float(subtotal), 2))
