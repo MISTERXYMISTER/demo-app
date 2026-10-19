@@ -25,6 +25,10 @@ class TestCartTotal(unittest.TestCase):
         items = [{"price": 8.0, "quantity": 1}]
         self.assertEqual(calculate_cart_total(items, coupon_code="FLAT10"), 0.0)
 
+    def test_vip20_coupon_sample(self):
+        items = [{"price": 100.0, "quantity": 1}]
+        self.assertEqual(calculate_cart_total(items, coupon_code="VIP20"), 80.0)
+
 
 if __name__ == "__main__":
     unittest.main()
